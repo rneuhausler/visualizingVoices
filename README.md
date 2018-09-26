@@ -11,7 +11,7 @@ developed as part of California Water Data Hackathon
 
 # D3 Visualization
 
-* (D3 Examples)[https://docs.google.com/document/d/1fN57EEKKXPlLb7Wkdy9au7r6EqguK42Hcnik7e4L9yc/edit]
+* [D3 Examples](https://docs.google.com/document/d/1fN57EEKKXPlLb7Wkdy9au7r6EqguK42Hcnik7e4L9yc/edit)
 
 
 # CAWaterDataChallenge Submission Entry Form
