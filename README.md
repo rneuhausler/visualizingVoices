@@ -8,6 +8,12 @@ developed as part of California Water Data Hackathon
 * if no compliance in WB, what does voices say?	
 * map of city locations overall	Olivia
 
+
+# D3 Visualization
+
+* (D3 Examples)[https://docs.google.com/document/d/1fN57EEKKXPlLb7Wkdy9au7r6EqguK42Hcnik7e4L9yc/edit]
+
+
 # CAWaterDataChallenge Submission Entry Form
 
 Submit your entry here no later than October 1, 2018 to be eligible for awards. The Summit and Awards Ceremony will be on October 18th in Los Angeles (and remotely).
