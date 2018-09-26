@@ -87,16 +87,23 @@ Your answer
 
 What steps have you taken / what would make it possible to have others reproduce your work or build upon it? #openscience #reproducibility
 Your answer
+
 Individual/Team Story: Tell us more about how your team formed (if you have a team) & what motivated you to participate.
 Your answer
+
 Zip Code(s) for team members: we'll use this to share a map of our participants' geographic diversity
 Your answer
+
 Social Media handles, hashtags, and other linkable content
 Your answer
+
 Fun fact / claim to fame: tell us something awesome you've achieved or an exciting upcoming opportunity that we could share (e.g., on social media)
 Your answer
+
 Optional: provide a summary video of up to 2 minutes. Share the URL here, or you can upload with your other materials further down on this form.
 Your answer
+
 Please upload your submission documents (Presentation, Videos, User Research, Wireframes, or other relevant files)
 ADD FILE
+
 Additional materials (if applicable): Link(s) to your team's GitHub repository, web-based solution, website.
