@@ -8,24 +8,27 @@ developed as part of California Water Data Hackathon
 * if no compliance in WB, what does voices say?	
 * map of city locations overall	Olivia
 
-CAWaterDataChallenge Submission Entry Form
+# CAWaterDataChallenge Submission Entry Form
+
 Submit your entry here no later than October 1, 2018 to be eligible for awards. The Summit and Awards Ceremony will be on October 18th in Los Angeles (and remotely).
 
 Don't have a Google Account to upload your documents? Fill out the Entry form and email the attached documents to us at the contact email below.
 
 Questions or suggestions? Email us at waterchallenge@westbigdatahub.org or connect via Slack! #CAWaterDataChallenge
 
-The name and photo associated with your Google account will be recorded when you upload files and submit this form. Not oliviathoang@gmail.com? Switch account
-* Required
-Project/Innovation Title: *
+Project/Innovation Title:
 Your answer
-Team/Group Name *
+
+Team/Group Name
 Your answer
+
 Affiliated Organizations (if applicable)
 Your answer
+
 Tagline: one sentence or phrase that describes the essence of your project, product, or innovation *
 Your answer
-Key team members *
+
+Key team members
 Your answer
 Email of Team Lead *
 Your answer
