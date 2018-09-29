@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Visualizing Voices</title>
+        <meta name="description" content="An interactive getting started guide for Brackets.">
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <style>
+    path {
+	fill: none;
+	stroke: #aaa;
+    }
+        
+</style>
+    <body>
+        
+        <h1>Visualizing Voices</h1>
+        <h2>... around California's water quality </h2>
+        
+        <h3> Title </h3>
+        <p>
+            This is a paragraph, here we write about our thang
+        </p>
+        
+        
+        	<svg width="600" height="100">
+		<path transform="translate(200, 0)" />
+	</svg>
+
+	<script src="//d3js.org/d3.v4.min.js"></script>
+	<script>
+var data = [[0, 50], [100, 80], [200, 40], [300, 60], [400, 30]];
+
+var lineGenerator = d3.line();
+var pathString = lineGenerator(data);
+
+d3.select('path')
+	.attr('d', pathString);
+
+	</script>
+        
+        
+        <h3> Title </h3>
+        <p>
+            This is a paragraph, here we write about our thang
+        </p>
+    </body>
+</html>
+
+
+/*
+Learning D3, html, and CSS \('.')/
+
+from https://d3indepth.com/introduction/
+
+**** loading csv data ****
+
+d3.csv('films.csv', function(err, data) {
+  // Do something with the data
+})
+
+*/
