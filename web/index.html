@@ -17,32 +17,65 @@
         
 </style>
     <body>
-        
         <h1>Visualizing Voices</h1>
         <h2>... around California's water quality </h2>
         
         <h3> Title </h3>
         <p>
-            This is a paragraph, here we write about our thang
+            HELLOO This is a paragraph, here we write about our thang
+            Hello
         </p>
         
         
-        	<svg width="600" height="100">
-		<path transform="translate(200, 0)" />
-	</svg>
-
-	<script src="//d3js.org/d3.v4.min.js"></script>
-	<script>
-var data = [[0, 50], [100, 80], [200, 40], [300, 60], [400, 30]];
-
-var lineGenerator = d3.line();
-var pathString = lineGenerator(data);
-
-d3.select('path')
-	.attr('d', pathString);
-
-	</script>
         
+        <!-- TREE DIAGRAM OF COUNTIES:https://bl.ocks.org/d3indepth/502c024a398dc772fe947905f217dab3 -->
+        
+        
+        <!-- MAP OF CALIFORNIA -->
+        
+                
+        <object id="CA" data="/images/Blank_California_Map.svg" type="image/svg+xml"></object>
+        
+        <!-- line 1 -->
+        
+        <svg width="1000" height="100">
+		  <path transform="translate(200, 0)" />
+        </svg>
+        
+        <svg width="1000" height="100">
+		  <g class="axis" transform="translate(20, 0)" />
+        </svg>
+        
+        
+        <script src="//d3js.org/d3.v4.min.js"></script>
+        
+
+        
+        
+        <script>
+            var data = [[0, 20], [100, 80], [200, 40], [300, 60], [400, 30]];
+            var lineGenerator = d3.line();
+            var pathString = lineGenerator(data);
+            
+            d3.select('path')
+	          .attr('d', pathString);
+        </script>
+        
+        
+        
+         <!-- axis -->
+
+        <script>
+            var scale = d3.scaleLinear().domain([0, 1000]).range([0, 600]);
+
+            var axis = d3.axisBottom().scale(scale);
+
+
+            d3.select('.axis')
+	          .call(axis);
+
+	    </script>  
+
         
         <h3> Title </h3>
         <p>
@@ -52,7 +85,9 @@ d3.select('path')
 </html>
 
 
-/*
+
+
+<!–– 
 Learning D3, html, and CSS \('.')/
 
 from https://d3indepth.com/introduction/
@@ -63,4 +98,14 @@ d3.csv('films.csv', function(err, data) {
   // Do something with the data
 })
 
-*/
+
+
+*** CREDIT ***
+
+CA SVG: By Thadius856 
+
+
+LINE, AXIS: D3 in Depth book by Peter Cook.
+
+
+-->
