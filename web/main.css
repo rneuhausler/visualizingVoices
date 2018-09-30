@@ -1,6 +1,7 @@
 html {
     background: #000000;
-    background-image: linear-gradient(270deg, rgb(230, 233, 233) 0%, rgb(216, 221, 221) 100%); /*https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient*/
+    background-image:
+        linear-gradient(270deg, rgb(230, 233, 233) 0%, rgb(216, 221, 221) 100%); /*https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient*/
 }
 
 /* body look */
@@ -13,8 +14,8 @@ body {
     font-size: 16px;
     line-height: 1.5;
     margin: 0 auto;
-    max-width: 800px;
-    padding: 2em 2em 4em;
+    max-width: 1000px;
+    padding: 2em 2em 6em;
 }
 
 /* headers */
@@ -25,8 +26,12 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.3;
 }
 
+
+h1 {margin-bottom: 0em}
+
 h2 {
-    margin-top: 1.3em;
+    margin-top: 0.1em;
+    color: #c8c5c7;
 }
 
 /* link text */
@@ -43,13 +48,40 @@ samp {
 }
 
 img {
-    animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
     background: transparent;
-    border: 10px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-    display: block;
     margin: 1.3em auto;
     max-width: 95%;
 }
 
+.CA {
+  fill: #94d31b;
+}
 
+.CA:hover {
+  fill: #ace63c;
+}
+
+/* test */
+
+.visualization {
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus__bar {
+  fill: coral;
+}
+.focus__text {
+  fill: white;
+}
+
+.bar--1 {
+  fill: DarkCyan;
+}
+
+.bar--2 {
+  fill: white;
+}

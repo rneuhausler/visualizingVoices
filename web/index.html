@@ -5,51 +5,54 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Visualizing Voices</title>
+        <title>Visualizing Voices | On water Quality in California</title>
         <meta name="description" content="An interactive getting started guide for Brackets.">
         <link rel="stylesheet" href="main.css">
+        <script src="//d3js.org/d3.v4.min.js"></script>
     </head>
-    <style>
+    
+    <style>    
     path {
 	fill: none;
 	stroke: #aaa;
     }
         
-</style>
+    .element{
+    shape-outside: circle(45%);
+    width: 300px;
+    height: 300px;
+    float: right;
+    }      
+    </style>
+    
+    
     <body>
-        <h1>Visualizing Voices</h1>
-        <h2>... around California's water quality </h2>
+    
         
-        <h3> Title </h3>
+                        <!-- MAP OF CALIFORNIA -->
+        <object class='element' width = "200" height = "300" align="right" id="CA" data="/images/counties.svg" type="image/svg+xml">
+        </object>
+                        <!-- TITLE -->
+        <h1>Visualizing Voices </h1>
+        <h2>On water Quality in California </h2>
+        
+                        <!-- INTRO -->
+
+        <h3> Intro </h3>
         <p>
-            HELLOO This is a paragraph, here we write about our thang
-            Hello
+            In 2012, California became the first state in the United States to recognize the human right to clean, affordable water (Assembly Bill 685). Now California recognizes that, “every human being has the right to safe, clean, affordable, and accessible water adequate for human consumption, cooking, and sanitary purposes.” (Water Code Section 106.3) The State Water Board made it a top priority to provide all humans their right to water through actions such as: "revising or establishing water quality control plans, policies, and grant critera; permitting; site remediation and monitoring; and water right administration." (CA Water Boards) The first step in developing new water systems is to first locate communities that do not have safe, clean water for drinking, cooking, and sanitary uses. While access to safe, clean water is now identified as a basic human right, over one million Californians are exposed to unsafe drinking water each year (Community Water Center). We found that there were data gaps in the California Water Boards data that tended to be small communities of low-income and therefore communities with little political voice.
+            The goal of Visualizing Voices is to make use of non-profit journalism to help identify where in space and when in time water systems in low-income communities have unacceptable water quality. We created a webscraper to identify key words or phrases to find relevant blog posts on the Community Water Center's website. From these blog posts, we run the webpage's HTML through a filter that contains the names of California cities to get a list of cities that the Community Water Center has published water quality data that is below compliance. This website compares the compliance data from the Community Water Board webscraping with the California Water Boards open source data for cities serviced by the Community Water Center (Arvin, Cutler, Ducor, East Orosi, East Porterville, Lamont, Monson, Poplar, Seville, and West Goshen). We hope that this model can be used to include other non-profit water justice organizations, to make use of the people's voices to locate those who are in need.
         </p>
         
-        
-        
-        <!-- TREE DIAGRAM OF COUNTIES:https://bl.ocks.org/d3indepth/502c024a398dc772fe947905f217dab3 -->
-        
-        
-        <!-- MAP OF CALIFORNIA -->
-        
-                
-        <object id="CA" data="/images/Blank_California_Map.svg" type="image/svg+xml"></object>
-        
-        <!-- line 1 -->
-        
+         <!-- line 1 SVG -->  
         <svg width="1000" height="100">
 		  <path transform="translate(200, 0)" />
         </svg>
         
+         <!-- scale SVG -->
         <svg width="1000" height="100">
 		  <g class="axis" transform="translate(20, 0)" />
         </svg>
-        
-        
-        <script src="//d3js.org/d3.v4.min.js"></script>
-        
-
         
         
         <script>
@@ -75,37 +78,33 @@
 	          .call(axis);
 
 	    </script>  
+        
+         <!-- scale SVG -->
+        <svg width="1000" height="100">
+		  <g class="two" transform="translate(20, 0)" />
+        </svg>
+        
+        <script>
+            var scale = d3.scaleLinear().domain([0, 100]).range([0, 600]);
+
+            var axis = d3.axisBottom().scale(scale);
+            
+            d3.select('.two')
+	          .call(axis);
+        </script>
+   
+        
+        
+        <!-- TREE DIAGRAM OF COUNTIES:https://bl.ocks.org/d3indepth/502c024a398dc772fe947905f217dab3 -->
+        
+        
+        
 
         
-        <h3> Title </h3>
-        <p>
-            This is a paragraph, here we write about our thang
-        </p>
     </body>
+    
+    
 </html>
 
 
 
-
-<!–– 
-Learning D3, html, and CSS \('.')/
-
-from https://d3indepth.com/introduction/
-
-**** loading csv data ****
-
-d3.csv('films.csv', function(err, data) {
-  // Do something with the data
-})
-
-
-
-*** CREDIT ***
-
-CA SVG: By Thadius856 
-
-
-LINE, AXIS: D3 in Depth book by Peter Cook.
-
-
--->
