@@ -10,25 +10,11 @@
         <link rel="stylesheet" href="main.css">
         <script src="//d3js.org/d3.v4.min.js"></script>
     </head>
-    
-    <style>    
-    path {
-	fill: none;
-	stroke: #aaa;
-    }
-        
-    .element{
-    shape-outside: circle(45%);
-    width: 300px;
-    height: 300px;
-    float: right;
-    }      
-    </style>
+
     
     
     <body>
     
-        
                         <!-- MAP OF CALIFORNIA -->
         <object class='element' width = "200" height = "300" align="right" id="CA" data="/images/counties.svg" type="image/svg+xml">
         </object>
@@ -36,12 +22,24 @@
         <h1>Visualizing Voices </h1>
         <h2>On water Quality in California </h2>
         
+        <!-- <script src="index.js"></script> -->
+        
                         <!-- INTRO -->
 
         <h3> Intro </h3>
         <p>
             In 2012, California became the first state in the United States to recognize the human right to clean, affordable water (Assembly Bill 685). Now California recognizes that, “every human being has the right to safe, clean, affordable, and accessible water adequate for human consumption, cooking, and sanitary purposes.” (Water Code Section 106.3) The State Water Board made it a top priority to provide all humans their right to water through actions such as: "revising or establishing water quality control plans, policies, and grant critera; permitting; site remediation and monitoring; and water right administration." (CA Water Boards) The first step in developing new water systems is to first locate communities that do not have safe, clean water for drinking, cooking, and sanitary uses. While access to safe, clean water is now identified as a basic human right, over one million Californians are exposed to unsafe drinking water each year (Community Water Center). We found that there were data gaps in the California Water Boards data that tended to be small communities of low-income and therefore communities with little political voice.
             The goal of Visualizing Voices is to make use of non-profit journalism to help identify where in space and when in time water systems in low-income communities have unacceptable water quality. We created a webscraper to identify key words or phrases to find relevant blog posts on the Community Water Center's website. From these blog posts, we run the webpage's HTML through a filter that contains the names of California cities to get a list of cities that the Community Water Center has published water quality data that is below compliance. This website compares the compliance data from the Community Water Board webscraping with the California Water Boards open source data for cities serviced by the Community Water Center (Arvin, Cutler, Ducor, East Orosi, East Porterville, Lamont, Monson, Poplar, Seville, and West Goshen). We hope that this model can be used to include other non-profit water justice organizations, to make use of the people's voices to locate those who are in need.
+        </p>
+        
+        
+        
+        <p>
+        
+        Hi Olivia! So I'm currently trying to create the following: https://mbostock.github.io/d3/talk/20111018/area-gradient.html (without the gradient filling). To see the code, right click and select "View Page Source". I have the moving and zoom working but had to comment out the "Draw" function below becuase it was causing problems.. this might be a v3 vs v4 thing, anyways, here is another interesting motion thing to consider but this also doesnt have the axis shown.. http://bl.ocks.org/shimizu/bf7f84066d10c71bd61d716500b26a31
+        
+        
+        
         </p>
         
          <!-- line 1 SVG -->  
@@ -53,48 +51,167 @@
         <svg width="1000" height="100">
 		  <g class="axis" transform="translate(20, 0)" />
         </svg>
-        
-        
-        <script>
-            var data = [[0, 20], [100, 80], [200, 40], [300, 60], [400, 30]];
-            var lineGenerator = d3.line();
-            var pathString = lineGenerator(data);
-            
-            d3.select('path')
-	          .attr('d', pathString);
-        </script>
-        
-        
-        
-         <!-- axis -->
 
-        <script>
-            var scale = d3.scaleLinear().domain([0, 1000]).range([0, 600]);
-
-            var axis = d3.axisBottom().scale(scale);
-
-
-            d3.select('.axis')
-	          .call(axis);
-
-	    </script>  
-        
-         <!-- scale SVG -->
-        <svg width="1000" height="100">
-		  <g class="two" transform="translate(20, 0)" />
-        </svg>
-        
-        <script>
-            var scale = d3.scaleLinear().domain([0, 100]).range([0, 600]);
-
-            var axis = d3.axisBottom().scale(scale);
-            
-            d3.select('.two')
-	          .call(axis);
-        </script>
    
+        <script>
+            
+        d3.csv("/data/comcenter.csv", function(data) {
+            for (var i = 0; i < data.length; i++) {
+                console.log(data[i].dt);
+                console.log(data[i].count);
+            }
+        });
+            
+        var data = [[0, 20], [100, 80], [200, 40], [300, 60], [400, 30]];
+        var lineGenerator = d3.line();
+        var pathString = lineGenerator(data);
+            d3.select('path')
+                .attr('d', pathString);
         
+        var scale = d3.scaleLinear().domain([0, 1000]).range([0, 600]);
+        var axis = d3.axisBottom().scale(scale);
+            d3.select('.axis')
+                .call(axis);
+            
+            
+                        //from d3noob
+            
+            
+                                    //from d3noob
+            // Set the dimensions of the canvas / graph
+        var margin = {top: 30, right: 20, bottom: 30, left: 50},
+            width = 600 - margin.left - margin.right,
+            height = 270 - margin.top - margin.bottom;
+
+        // Parse the date / time
+        var parseDate =  d3.timeParse("%Y-%m-%d");
+        var formatTime = d3.timeFormat("%B %Y");
+
+        // Set the ranges
+        var x = d3.scaleTime().range([0, width]);
+        var y = d3.scaleLinear().range([height, 0]);
+            
+        // Define the axes
+        var xAxis = d3.axisBottom().scale(x)
+            .ticks(5).tickPadding(6);
+        var yAxis = d3.axisLeft().scale(y)
+            .ticks(5).tickPadding(6);
+            
+        // Define the line
+        var valueline = d3.line()
+            .x(function(d) { return x(d.dt); })
+            .y(function(d) { return y(d.count); });
+
+        // Define the div for the tooltip
+        var div = d3.select("body").append("div")	
+            .attr("class", "tooltip")				
+            .style("opacity", 0);
+            
+            
+        // Adds the svg canvas
+        var svg = d3.select("body")
+            .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+                .attr("transform", 
+                      "translate(" + margin.left + "," + margin.top + ")");
+            
+            
+        // From view-source:http://mbostock.github.io/d3/talk/20111018/area-gradient.html
+         svg.append("svg:clipPath")
+            .attr("id", "clip")
+          .append("svg:rect")
+            .attr("x", x(0))
+            .attr("y", y(1))
+            .attr("width", x(1) - x(0))
+            .attr("height", y(0) - y(1));
+
+        svg.append("svg:g")
+            .attr("class", "y axis")
+            .attr("transform", "translate(" + width + ",0)");
+
+        svg.append("svg:path")
+            .attr("class", "area")
+            .attr("clip-path", "url(#clip)")
+            .style("fill", "url(#gradient)");
+
+        svg.append("svg:g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")");
+
+        svg.append("svg:path")
+            .attr("class", "line")
+            .attr("clip-path", "url(#clip)");
+
+        svg.append("svg:rect")
+            .attr("class", "pane")
+            .attr("width", width)
+            .attr("height", height)
+            .call(d3.zoom().on("zoom", zoom));
+   
+            
+            
+            
+            
+
+        // Get the data
+        d3.csv("/data/comcenter.csv", function(error, data) {
+            data.forEach(function(d) {
+                d.dt = parseDate(d.dt);
+                d.count = +d.count;
+            });
+
+            // Scale the range of the data
+            x.domain(d3.extent(data, function(d) { return d.dt; }));
+            y.domain([0, d3.max(data, function(d) { return d.count; })]);
+
+            // Add the valueline path.
+            svg.append("path")
+                .attr("class", "line")
+                .attr("d", valueline(data));
+
+            // Add the scatterplot
+            svg.selectAll("dot")	
+                .data(data)			
+            .enter().append("circle")								
+                .attr("r", 5)		
+                .attr("cx", function(d) { return x(d.dt); })		 
+                .attr("cy", function(d) { return y(d.count); })		
+                .on("mouseover", function(d) {		
+                    div.transition()		
+                        .duration(200)		
+                        .style("opacity", .9);		
+                    div	.html(formatTime(d.dt) + "<br/>"  + d.count)	
+                        .style("left", (d3.event.pageX) + "px")		
+                        .style("top", (d3.event.pageY - 28) + "px");	
+                    })					
+                .on("mouseout", function(d) {		
+                    div.transition()		
+                        .duration(500)		
+                        .style("opacity", 0);	
+                });
+            
+            //draw();
+
+        });
+            
+//            function draw() {
+//              svg.select("g.x.axis").call(xAxis);
+//              svg.select("g.y.axis").call(yAxis);
+//              svg.select("path.line").attr("d", valueline);
+//            }
+//              d3.select("#footer span").text("Pollutants, " + x.domain().map(format).join("-"));
+
+            function zoom() {
+                svg.attr("transform", d3.event.transform); // TODO d3.behavior.zoom should support extents
+            }
+   
+    
+            
+        </script>
         
+    
         <!-- TREE DIAGRAM OF COUNTIES:https://bl.ocks.org/d3indepth/502c024a398dc772fe947905f217dab3 -->
         
         

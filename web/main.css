@@ -8,7 +8,7 @@ html {
 
 body {
     background: #404040;
-    color: #f2f2f2	; /*text*/
+    color: #f2f2f2; /*text*/
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px;
@@ -47,11 +47,91 @@ samp {
     display: none;
 }
 
+
+/* Images */
+
+
 img {
     background: transparent;
     margin: 1.3em auto;
     max-width: 95%;
 }
+
+/* CA Object */
+
+.element{
+    shape-outside: circle(45%);
+    width: 300px;
+    height: 300px;
+    float: right;
+    }
+
+/* line of plots */
+
+path {
+	fill: none;
+	stroke: #aaa;
+    }
+/* tip */
+
+
+/* hover  plots */
+
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    max-width: 160px;					
+    max-height: 280px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+/* zoom plots */
+
+svg {
+  font-size: 10px;
+}
+
+.axis {
+  shape-rendering: crispEdges;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke-width: .5px;
+}
+
+.x.axis path {
+  stroke: #000;
+}
+
+.x.axis line {
+  stroke: #fff;
+  stroke-opacity: .5;
+}
+
+.y.axis line {
+  stroke: #ddd;
+}
+
+
+
+rect.pane {
+  cursor: move;
+  fill: none;
+  pointer-events: all;
+}
+
+
+
+
+
+/* test 
+
 
 .CA {
   fill: #94d31b;
@@ -61,7 +141,6 @@ img {
   fill: #ace63c;
 }
 
-/* test */
 
 .visualization {
 }
@@ -85,3 +164,36 @@ img {
 .bar--2 {
   fill: white;
 }
+
+
+.d3-tip {
+      line-height: 1;
+      padding: 6px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+ 
+    .d3-tip:after {
+      box-sizing: border-box;
+      display: inline;
+      font-size: 10px;
+      width: 100%;
+      line-height: 1;
+      color: rgba(0, 0, 0, 0.8);
+      content: "\25BC";
+      position: absolute;
+      text-align: center;
+    }
+ 
+    /* Style northward tooltips specifically */
+    .d3-tip.n:after {
+      margin: -2px 0 0 0;
+      top: 100%;
+      left: 0;
+    }
+
+
+*/
+
