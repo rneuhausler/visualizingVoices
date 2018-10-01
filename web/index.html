@@ -196,15 +196,16 @@
 
         });
             
-//            function draw() {
-//              svg.select("g.x.axis").call(xAxis);
-//              svg.select("g.y.axis").call(yAxis);
-//              svg.select("path.line").attr("d", valueline);
-//            }
-//              d3.select("#footer span").text("Pollutants, " + x.domain().map(format).join("-"));
+            function draw() {
+              svg.select("g.x.axis").call(xAxis);
+              svg.select("g.y.axis").call(yAxis);
+              svg.select("path.line").attr("d", valueline);
+            }
+              d3.select("#footer span").text("Pollutants, " + x.domain().map(format).join("-"));
 
             function zoom() {
-                svg.attr("transform", d3.event.transform); // TODO d3.behavior.zoom should support extents
+                svg.attr("transform", d3.event.transform) // TODO d3.behavior.zoom should support extents
+                draw();
             }
    
     
