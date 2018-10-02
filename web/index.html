@@ -34,50 +34,63 @@
         
         
         
-        <p>
-        
-        Hi Olivia! So I'm currently trying to create the following: https://mbostock.github.io/d3/talk/20111018/area-gradient.html (without the gradient filling). To see the code, right click and select "View Page Source". I have the moving and zoom working but had to comment out the "Draw" function below becuase it was causing problems.. this might be a v3 vs v4 thing, anyways, here is another interesting motion thing to consider but this also doesnt have the axis shown.. http://bl.ocks.org/shimizu/bf7f84066d10c71bd61d716500b26a31
-        
-        
-        
-        </p>
-        
-         <!-- line 1 SVG -->  
-        <svg width="1000" height="100">
-		  <path transform="translate(200, 0)" />
-        </svg>
-        
-         <!-- scale SVG -->
-        <svg width="1000" height="100">
-		  <g class="axis" transform="translate(20, 0)" />
-        </svg>
 
-   
-        <script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js" charset="utf-8" type="text/javascript"></script>
+        <script src="d3.layout.timeline.js" charset="utf-8" type="text/javascript"></script>
+        <script type="text/javascript">
             
-        d3.csv("/data/comcenter.csv", function(data) {
-            for (var i = 0; i < data.length; i++) {
-                console.log(data[i].dt);
-                console.log(data[i].count);
-            }
-        });
-            
-        var data = [[0, 20], [100, 80], [200, 40], [300, 60], [400, 30]];
-        var lineGenerator = d3.line();
-        var pathString = lineGenerator(data);
-            d3.select('path')
-                .attr('d', pathString);
-        
-        var scale = d3.scaleLinear().domain([0, 1000]).range([0, 600]);
-        var axis = d3.axisBottom().scale(scale);
-            d3.select('.axis')
-                .call(axis);
+        types = ["Arvin","Oriosi","Porterville","Lamont","Poplar"];
 
+        colorScale = d3.scale.ordinal()
+          .domain(types)
+          .range(["#96abb1", "#313746", "#b0909d", "#687a97", "#292014"]);
+
+        d3.csv("/data/comcenter_city.csv", function (csv) {
+          var timeline = d3.layout.timeline()
+            .size([500,80])
+            .extent(["1/1/2012", "4/1/2018"])
+            .padding(3)
+            .maxBandHeight(20);
+
+        types.forEach(function (type, i) {
+          onlyThisType = csv.filter(function(d) {return d.sphere === type});
+
+          theseBands = timeline(onlyThisType);
+
+          d3.select("svg").append("g")
+          .attr("transform", "translate(100," + (35 + (i * 90)) + ")")
+          .selectAll("rect")
+          .data(theseBands)
+          .enter()
+          .append("rect")
+          .attr("rx", 2)
+          .attr("x", function (d) {return d.start})
+          .attr("y", function (d) {return d.y})
+          .attr("height", function (d) {return d.dy})
+          .attr("width", function (d) {return d.end - d.start})
+          .style("fill", function (d) {return colorScale(d.sphere)})
+          .style("stroke", "black")
+          .style("stroke-width", 1);
+
+          d3.select("svg").append("text")
+          .text(type)
+          .attr("y", 50 + (i * 90))
+          .attr("x", 20)
+
+        })
+
+        })
+            <div id="viz">
+                <svg style="background:white;" height=1100 width=1100>
+            </svg>
+            </div>
             
         </script>
         
-    
-        <!-- TREE DIAGRAM OF COUNTIES:https://bl.ocks.org/d3indepth/502c024a398dc772fe947905f217dab3 -->
+        
+        
+        
+        
         
         <script type="text/javascript" src="d3/d3.js"></script>
         <script type="text/javascript" src="d3/d3.csv.js"></script>
@@ -91,7 +104,7 @@
             </div>
             <script type="text/javascript">
 
-        var m = [79, 300, 160, 7],
+        var m = [79, 100, 160, 7],
             w = 1280 - m[1] - m[3],
             h = 800 - m[0] - m[2],
             parse = d3.time.format("%Y-%m-%d").parse,
@@ -106,13 +119,6 @@
             y = d3.scale.linear().range([h, 0]),
             xAxis = d3.svg.axis().scale(x).orient("bottom").tickSize(-h, 0).tickPadding(20),
             yAxis = d3.svg.axis().scale(y).orient("right").tickSize(-w).tickPadding(6);
-
-        //// An area generator.
-        //var area = d3.svg.area()
-        //    .interpolate("step-after")
-        //    .x(function(d) { return x(d.date); })
-        //    .y0(y(0))
-        //    .y1(function(d) { return y(d.value); });
 
         // A line generator.
         var line = d3.svg.line()
@@ -182,22 +188,17 @@
           });
 
 
-          // Compute the maximum price.
-          x.domain([new Date(2012, 0, 1), new Date(2019, 0, 0)]);
-          y.domain([0, d3.max(data, function(d) { return d.value; })]);
+          // Compute the maximum value.
+          x.domain([d3.min(data, function(d) { return d.date; }), d3.max(data, function(d) { return d.date; })]);
+ 
+         // x.domain([new Date(2012, 0, 1), new Date(2019, 0, 0)]);
+          y.domain([0, d3.max(data, function(d) { return d.value; }) + 1]);
 
           // Bind the data to our path elements.
           svg.select("path.area").data([data]);
           svg.select("path.line").data([data]);
         
             
-        
-          svg.selectAll("dot")	
-                .data(data)			
-            .enter().append("circle")								
-                .attr("r", 5)		
-                .attr("cx", function(d) { return x(d.date); })		 
-                .attr("cy", function(d) { return y(d.value); })		
             
 
           draw();
