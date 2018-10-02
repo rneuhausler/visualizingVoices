@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     
@@ -92,7 +91,7 @@
             </div>
             <script type="text/javascript">
 
-        var m = [79, 250, 160, 7],
+        var m = [79, 300, 160, 7],
             w = 1280 - m[1] - m[3],
             h = 800 - m[0] - m[2],
             parse = d3.time.format("%Y-%m-%d").parse,
@@ -105,7 +104,7 @@
         // Scales. Note the inverted domain for the y-scale: bigger is up!
         var x = d3.time.scale().range([0, w]),
             y = d3.scale.linear().range([h, 0]),
-            xAxis = d3.svg.axis().scale(x).orient("bottom").tickSize(-h, 0).tickPadding(6),
+            xAxis = d3.svg.axis().scale(x).orient("bottom").tickSize(-h, 0).tickPadding(20),
             yAxis = d3.svg.axis().scale(y).orient("right").tickSize(-w).tickPadding(6);
 
         //// An area generator.
@@ -190,23 +189,15 @@
           // Bind the data to our path elements.
           svg.select("path.area").data([data]);
           svg.select("path.line").data([data]);
+        
             
-        svg.selectAll("dot")	
+        
+          svg.selectAll("dot")	
                 .data(data)			
             .enter().append("circle")								
                 .attr("r", 5)		
                 .attr("cx", function(d) { return x(d.date); })		 
                 .attr("cy", function(d) { return y(d.value); })		
-                .on("mouseover", function(d) {		
-                    div.transition()		
-                        .duration(200)		
-                        .style("opacity", .9);		
-                    div	.html(formatTime(d.date) + "<br/>"  + d.value)	
-                        .style("left", (d3.event.pageX) + "px")		
-                        .style("top", (d3.event.pageY - 28) + "px");	
-                    })					
-            
-
             
 
           draw();

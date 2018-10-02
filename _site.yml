@@ -10,4 +10,4 @@ navbar:
 output:
   html_document:
     theme: lumen
-    css: main.css
+    css: main_og.css

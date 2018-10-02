@@ -124,7 +124,7 @@ img {
 #footer {
   top: 680px;
   right: 140px;
-  text-align: right;
+  text-align: left;
 }
 
 
@@ -188,9 +188,15 @@ a:hover {
           shape-rendering: crispEdges;
         }
 
-.axis path, .axis line {
-          fill: none;
-          stroke-width: .75px;
+        .axis path{
+         stroke-width: .5px;
+        stroke: #666
+        
+        } 
+        
+        .axis line {
+          fill: #666;
+          stroke-width: .2px;
         }
 
         rect.pane {
