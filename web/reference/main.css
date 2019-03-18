@@ -1,0 +1,199 @@
+html {
+    background: #000000;
+    background-image:
+        linear-gradient(270deg, rgb(230, 233, 233) 0%, rgb(216, 221, 221) 100%); /*https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient*/
+}
+
+/* body look */
+
+body {
+    background: #404040 /*'white' #404040; */
+    color: #f2f2f2; /*text*/
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.08);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 2em 2em 6em;
+}
+
+/* headers */
+
+h1, h2, h3, h4, h5, h6 {
+    color: #686868;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+
+h1 {margin-bottom: 0em}
+
+h2 {
+    margin-top: 0.1em;
+    color: #c8c5c7;
+}
+
+/* link text */
+a {
+    color: #f2f2f2;
+}
+
+b, strong {
+    font-weight: 600;
+}
+
+samp {
+    display: none;
+}
+
+
+/* Images */
+
+
+img {
+    background: transparent;
+    margin: 1.3em auto;
+    max-width: 95%;
+}
+
+/* CA Object */
+
+.element{
+    shape-outside: circle(45%);
+    width: 200px;
+    height: 200px;
+    float: right;
+    }
+
+/* line of plots */
+
+path {
+	fill: none;
+	stroke: #aaa;
+    }
+/* tip */
+
+
+/* hover  plots */
+
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    max-width: 160px;					
+    max-height: 280px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
+}
+
+/* zoom plots */
+
+svg {
+  font-size: 10px;
+}
+
+.axis {
+  shape-rendering: crispEdges;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke-width: .5px;
+}
+
+.x.axis path {
+  stroke: #000;
+}
+
+.x.axis line {
+  stroke: #fff;
+  stroke-opacity: .5;
+}
+
+.y.axis line {
+  stroke: #ddd;
+}
+
+
+
+rect.pane {
+  cursor: move;
+  fill: none;
+  pointer-events: all;
+}
+
+
+
+
+
+/* test 
+
+
+.CA {
+  fill: #94d31b;
+}
+
+.CA:hover {
+  fill: #ace63c;
+}
+
+
+.visualization {
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus__bar {
+  fill: coral;
+}
+.focus__text {
+  fill: white;
+}
+
+.bar--1 {
+  fill: DarkCyan;
+}
+
+.bar--2 {
+  fill: white;
+}
+
+
+.d3-tip {
+      line-height: 1;
+      padding: 6px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+ 
+    .d3-tip:after {
+      box-sizing: border-box;
+      display: inline;
+      font-size: 10px;
+      width: 100%;
+      line-height: 1;
+      color: rgba(0, 0, 0, 0.8);
+      content: "\25BC";
+      position: absolute;
+      text-align: center;
+    }
+ 
+    /* Style northward tooltips specifically */
+    .d3-tip.n:after {
+      margin: -2px 0 0 0;
+      top: 100%;
+      left: 0;
+    }
+
+
+*/
+
